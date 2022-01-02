@@ -3,6 +3,7 @@ package setup;
 
 import browsers.Browsers;
 import browsers.customs.ProfileChrome;
+import browsers.customs.ProfileLocalChrome;
 import browsers.standard.StandarChrome;
 import browsers.standard.StandarEdge;
 import browsers.standard.StandarFirefox;
@@ -56,6 +57,8 @@ public class SetupWebdriver {
         browsers.put("firefox", new StandarFirefox());
         browsers.put("edge", new StandarEdge());
         browsers.put("chrome-profile", new ProfileChrome());
+        browsers.put("chrome-local-profile", new ProfileLocalChrome());
+
 
         Browsers browser = browsers.get(browserName);
 
