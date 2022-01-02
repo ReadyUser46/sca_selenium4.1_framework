@@ -9,13 +9,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class ProfileChrome extends Browsers {
+public class ProfileLocalChrome extends Browsers {
     private static final ChromeOptions chromeOptions = new ChromeOptions();
 
-    public ProfileChrome() {
+    public ProfileLocalChrome() {
         super(chromeOptions);
-        chromeOptions.addArguments("user-data-dir=/tmp/chrome_profiles");
-        chromeOptions.addArguments("--profile-directory=Profile 2");
+        chromeOptions.addArguments("user-data-dir=C:\\Users\\blackout\\AppData\\Local\\Google\\Chrome\\User Data");
+        chromeOptions.addArguments("--profile-directory=Profile 1");
 
     }
 
