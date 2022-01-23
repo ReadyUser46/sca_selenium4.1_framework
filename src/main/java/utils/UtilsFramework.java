@@ -20,21 +20,22 @@ import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @SuppressWarnings("JavaDoc")
-public class Utils {
+public class UtilsFramework {
 
     /**
      * @author Sergio Caballero
      */
 
-    protected static final Logger LOGGER = Logger.getLogger(Utils.class.getName());
+    protected static final Logger LOGGER = Logger.getLogger(UtilsFramework.class.getName());
     protected final WebDriver driver;
     protected final String testCaseName;
 
-    public Utils(WebDriver driver, String testCaseName) {
+    public UtilsFramework(WebDriver driver, String testCaseName) {
         this.driver = driver;
         this.testCaseName = testCaseName;
     }
@@ -96,13 +97,18 @@ public class Utils {
     }
 
     public void switchToNextWindow() {
-        final int countWindows = driver.getWindowHandles().size();
-        String actualWindowName = driver.getWindowHandle();
-        for (String winHandle : driver.getWindowHandles()) {
-            if (!actualWindowName.equals(winHandle)) {
-                switchToWindow(winHandle);
+        final int winSize = driver.getWindowHandles().size();
+        Set<String> windowHandles = driver.getWindowHandles();
+        String currentWin = driver.getWindowHandle();
+        for (String handle : windowHandles) {
+            if (!currentWin.equals(handle)) {
+                switchToWindow(handle);
             }
         }
+    }
+
+    public void newTab() {
+        ((JavascriptExecutor) driver).executeScript("window.open()");
     }
 
     public void acceptAlert(long timeOutInSeconds) {
